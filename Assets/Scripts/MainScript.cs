@@ -58,8 +58,8 @@ public class MainScript : MonoBehaviour
     public void Search()
     {
         output.Destroy();
-        Debug.Log(BagSize.Get_Names());
-        GetData();
+        Debug.Log(Airbags.Get_Names());
+        //GetData();
     }
 
     public string FixString(string data)
