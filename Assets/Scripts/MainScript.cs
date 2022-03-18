@@ -8,6 +8,12 @@ using System;
 
 public class MainScript : MonoBehaviour
 {
+    //public InputField X1; для полей с вводом  
+    //MinX = double.Parse(X1.text);
+
+    public BodyScript BodyS;
+    string Body;
+
     [Serializable]
     public class Auto
     {
