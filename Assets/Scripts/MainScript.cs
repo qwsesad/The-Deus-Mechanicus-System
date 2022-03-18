@@ -11,8 +11,26 @@ public class MainScript : MonoBehaviour
     //public InputField X1; для полей с вводом  
     //MinX = double.Parse(X1.text);
 
-    public BodyScript BodyS;
-    string Body;
+    public ToggleScript Body;
+    public ToggleScript BagSize;
+    public ToggleScript AmountSeats;
+    public ToggleScript AmountDoors;
+    public ToggleScript Country;
+    public ToggleScript Mark;
+    public ToggleScript TypeOfDrive;
+    public ToggleScript FuelType;
+    public ToggleScript Transmission;
+    public ToggleScript ElectricWindows;
+    public ToggleScript Climate;
+    public ToggleScript Roof;
+    public ToggleScript Security;
+    public ToggleScript Cabin;
+    public ToggleScript Multimedia;
+    public ToggleScript Assist;
+    public ToggleScript Airbags;
+
+
+    string body;
 
     [Serializable]
     public class Auto
@@ -23,7 +41,6 @@ public class MainScript : MonoBehaviour
     }
 
     public string server;
-    public string transmisson;
 
     public OutputScript output;
     public async UniTask GetData()
@@ -31,17 +48,17 @@ public class MainScript : MonoBehaviour
         var data0 = Get();
         output.Destroy();
         var data = FixString(await data0);
-        Debug.Log(data);
         Auto[] autos = JsonHelper.FromJson<Auto>(data);
         var CreateCards = autos.Select(async card =>
         {
-            Debug.Log(card.image);
             await output.Create(card.name, card.link, card.image);
         });
         await UniTask.WhenAll(CreateCards);
     }
     public void Search()
     {
+        output.Destroy();
+        Debug.Log(BagSize.Get_Names());
         GetData();
     }
 
@@ -60,8 +77,22 @@ public class MainScript : MonoBehaviour
     private async UniTask<string> Get(CancellationToken cancellationtoken = default)
     {
         WWWForm form = new WWWForm();
-        transmisson = "[\"Автоматическая\", \"Механика\"]";
-        form.AddField("Transmisson", transmisson);
+        form.AddField("Body", Body.Get_Names());
+        form.AddField("BagSize", BagSize.Get_Names());
+        form.AddField("AmountSeats", AmountSeats.Get_Names());
+        form.AddField("AmountDoors", AmountDoors.Get_Names());
+        form.AddField("Country", Country.Get_Names());
+        form.AddField("Mark", Mark.Get_Names());
+        form.AddField("TypeOfDrive", TypeOfDrive.Get_Names());
+        form.AddField("FuelType", FuelType.Get_Names());
+        form.AddField("ElectricWindows", ElectricWindows.Get_Names());
+        form.AddField("Climate", Climate.Get_Names());
+        form.AddField("Roof", Roof.Get_Names());
+        form.AddField("Security", Security.Get_Names());
+        form.AddField("Cabin", Cabin.Get_Names());
+        form.AddField("Multimedia", Multimedia.Get_Names());
+        form.AddField("Assist", Assist.Get_Names());
+        form.AddField("Airbags", Airbags.Get_Names());
         var www = UnityWebRequest.Post(server, form);
         await www.SendWebRequest().WithCancellation(cancellationtoken);
         return www.result == UnityWebRequest.Result.Success ? www.downloadHandler.text : null;
