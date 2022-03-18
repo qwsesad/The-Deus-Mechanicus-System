@@ -79,10 +79,10 @@ public class MainScript : MonoBehaviour
     public void Search()
     {
         output.Destroy();
-        Debug.Log(Body.Get_Names());
-        Debug.Log(BagSize.Get_Names());
+        //Debug.Log(Body.Get_Names());
+        //Debug.Log(BagSize.Get_Names());
         Debug.Log(Power.getValues());
-        GetData();
+        //GetData();
     }
 
     public string FixString(string data)
