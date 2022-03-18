@@ -12912,6 +12912,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 633190746}
+  - component: {fileID: 633190747}
   m_Layer: 5
   m_Name: Body
   m_TagString: Untagged
@@ -12940,6 +12941,18 @@ RectTransform:
   m_AnchoredPosition: {x: -382.51, y: 153.96}
   m_SizeDelta: {x: 1126.3, y: 334.94}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &633190747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 633190745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f738efaf08e9beb4aa345f966e209f27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &636895709
 GameObject:
   m_ObjectHideFlags: 0
@@ -14209,9 +14222,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 572bb91955e753740879b8ac4661f075, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BodyS: {fileID: 633190747}
   server: http://asdasdadsads.ru/AutoScripts/Index.php
-  transmisson1: "\u0410\u0432\u0442\u043E\u043C\u0430\u0442\u0438\u0447\u0435\u0441\u043A\u0430\u044F"
-  transmisson2: "\u041C\u0435\u0445\u0430\u043D\u0438\u043A\u0430"
+  transmisson: 
   output: {fileID: 35281218}
 --- !u!4 &675487350
 Transform:
