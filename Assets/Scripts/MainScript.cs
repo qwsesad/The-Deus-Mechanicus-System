@@ -11,6 +11,10 @@ public class MainScript : MonoBehaviour
     //public InputField X1; для полей с вводом  
     //MinX = double.Parse(X1.text);
 
+    public GameObject Technical;
+    public GameObject Ext;
+    public GameObject Equip;
+
     public ToggleScript Body;
     public ToggleScript BagSize;
     public ToggleScript AmountSeats;
@@ -48,6 +52,7 @@ public class MainScript : MonoBehaviour
         var data0 = Get();
         output.Destroy();
         var data = FixString(await data0);
+        Debug.Log(data);
         Auto[] autos = JsonHelper.FromJson<Auto>(data);
         var CreateCards = autos.Select(async card =>
         {
@@ -55,11 +60,19 @@ public class MainScript : MonoBehaviour
         });
         await UniTask.WhenAll(CreateCards);
     }
+
+    private void Start()
+    {
+        Technical.SetActive(false);
+        Ext.SetActive(false);
+        Equip.SetActive(false);
+    }
+
     public void Search()
     {
         output.Destroy();
-        Debug.Log(Airbags.Get_Names());
-        //GetData();
+        Debug.Log(Body.Get_Names());
+        GetData();
     }
 
     public string FixString(string data)
@@ -93,6 +106,7 @@ public class MainScript : MonoBehaviour
         form.AddField("Multimedia", Multimedia.Get_Names());
         form.AddField("Assist", Assist.Get_Names());
         form.AddField("Airbags", Airbags.Get_Names());
+        form.AddField("Transmission", Transmission.Get_Names());
         var www = UnityWebRequest.Post(server, form);
         await www.SendWebRequest().WithCancellation(cancellationtoken);
         return www.result == UnityWebRequest.Result.Success ? www.downloadHandler.text : null;
