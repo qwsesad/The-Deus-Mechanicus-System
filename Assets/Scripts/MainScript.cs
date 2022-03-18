@@ -8,7 +8,7 @@ using System;
 
 public class MainScript : MonoBehaviour
 {
-    //public InputField X1; для полей с вводом  
+    //public InputField X1; пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ  
     //MinX = double.Parse(X1.text);
 
     public ToggleScript Body;
@@ -28,6 +28,16 @@ public class MainScript : MonoBehaviour
     public ToggleScript Multimedia;
     public ToggleScript Assist;
     public ToggleScript Airbags;
+
+    public MinMaxScript Power;
+    public MinMaxScript Size;
+    public MinMaxScript Acceleration;
+    public MinMaxScript Speed;
+    public MinMaxScript FuelConsumption;
+    public MinMaxScript PowerReserve;
+    public MinMaxScript Cost;
+    public MinMaxScript RoadP;
+    public MinMaxScript Year;
 
 
     string body;
@@ -59,6 +69,7 @@ public class MainScript : MonoBehaviour
     {
         output.Destroy();
         Debug.Log(BagSize.Get_Names());
+        Debug.Log(Power.getValues());
         GetData();
     }
 
@@ -93,6 +104,14 @@ public class MainScript : MonoBehaviour
         form.AddField("Multimedia", Multimedia.Get_Names());
         form.AddField("Assist", Assist.Get_Names());
         form.AddField("Airbags", Airbags.Get_Names());
+        form.AddField("Power", Power.getValues());
+        form.AddField("Size", Size.getValues());
+        form.AddField("Acceleration", Acceleration.getValues());
+        form.AddField("Speed", Speed.getValues());
+        form.AddField("FuelConsumption", FuelConsumption.getValues());
+        form.AddField("PowerReserve", PowerReserve.getValues());
+        form.AddField("Cost", Cost.getValues());
+        form.AddField("RoadP", RoadP.getValues());
         var www = UnityWebRequest.Post(server, form);
         await www.SendWebRequest().WithCancellation(cancellationtoken);
         return www.result == UnityWebRequest.Result.Success ? www.downloadHandler.text : null;
