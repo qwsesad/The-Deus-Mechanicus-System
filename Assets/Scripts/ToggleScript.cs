@@ -26,25 +26,27 @@ public class ToggleScript : MonoBehaviour
 
     public string Get_Names()
     {
-        string output = TName.text + " IN (";
+        string output = "";
 
         for (int i = 0; i < amount; i++)
         {
             if (toggles[i].isOn)
             {
-                output += "\"" + toggles[i].GetComponentInChildren<Text>().text + "\",";
+                output += TName.text + " LIKE \'%" + toggles[i].GetComponentInChildren<Text>().text + "%\' OR ";
             }
         }
 
-        if (output == (TName.text + " IN ("))
+        if (output == "")
         {
             for (int i = 0; i < amount; i++)
             {
-                output += "\"" + toggles[i].GetComponentInChildren<Text>().text + "\",";
+                output += TName.text + " LIKE \'%" + toggles[i].GetComponentInChildren<Text>().text + "%\' OR ";
             }
         }
 
-        output = output.TrimEnd(',') + ")";
+        char[] tr = { 'O', 'R', ' '};
+
+        output = "(" + output.TrimEnd(tr) + ")";
 
         return output;
     }

@@ -90,6 +90,7 @@ public class MainScript : MonoBehaviour
     public void Search()
     {
         output.Destroy();
+        Debug.Log(CreateQuery());
         GetData();
     }
 
@@ -187,8 +188,31 @@ public class MainScript : MonoBehaviour
     private void Default()
     { 
         Body.Default();
-        AmountSeats.Default();
         BagSize.Default();
+        AmountSeats.Default();
+        AmountDoors.Default();
+        Country.Default();
+        Mark.Default();
+        TypeOfDrive.Default();
+        FuelType.Default();
+        ElectricWindows.Default();
+        Climate.Default();
+        Roof.Default();
+        Security.Default();
+        Cabin.Default();
+        Multimedia.Default();
+        Assist.Default();
+        Airbags.Default();
+        Transmission.Default();
+        Power.Default();
+        Size.Default();
+        Acceleration.Default();
+        Speed.Default();
+        FuelConsumption.Default();
+        PowerReserve.Default();
+        Cost.Default();
+        RoadP.Default();
+        Year.Default();
     }
 }
 
