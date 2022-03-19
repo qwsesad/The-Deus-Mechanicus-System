@@ -1565,10 +1565,10 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 400, y: 350}
+  m_CellSize: {x: 600, y: 700}
   m_Spacing: {x: 100, y: 50}
   m_Constraint: 1
-  m_ConstraintCount: 4
+  m_ConstraintCount: 3
 --- !u!114 &35281218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15513,6 +15513,7 @@ MonoBehaviour:
   Ext: {fileID: 1535769040}
   Equip: {fileID: 1869347706}
   Sort: {fileID: 1953245035}
+  Preset: {fileID: 1074618480}
   Body: {fileID: 633190747}
   BagSize: {fileID: 999890856}
   AmountSeats: {fileID: 1488891006}
@@ -25190,11 +25191,21 @@ MonoBehaviour:
       m_Image: {fileID: 0}
     - m_Text: "\u0418\u043C\u0438\u0434\u0436"
       m_Image: {fileID: 0}
-    - m_Text: "\u041D\u0430\u0434\u0451\u0436\u043D\u043E\u0441\u0442\u044C"
-      m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 675487349}
+        m_TargetAssemblyTypeName: MainScript, Assembly-CSharp
+        m_MethodName: Presets
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &1074618481
 MonoBehaviour:
@@ -37619,7 +37630,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 796131903}
   m_Direction: 0
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.9515
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

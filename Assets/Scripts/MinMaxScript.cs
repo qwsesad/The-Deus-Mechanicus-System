@@ -133,4 +133,26 @@ public class MinMaxScript : MonoBehaviour
         var str = "{\"Items\":" + data + "}";
         return str;
     }
+
+    public void SetMin(double m)
+    {
+        if (double.Parse(minmax.Min) <= m && double.Parse(minmax.Min) >= m)
+        {
+            min.text = m.ToString();
+        }
+    }
+
+    public void SetMax(double m)
+    {
+        if (double.Parse(minmax.Min) <= m && double.Parse(minmax.Min) >= m)
+        {
+            min.text = m.ToString();
+        }
+    }
+
+    public void Default()
+    {
+        min.text = "";
+        max.text = "";
+    }
 }

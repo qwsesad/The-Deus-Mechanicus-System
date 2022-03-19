@@ -48,4 +48,26 @@ public class ToggleScript : MonoBehaviour
 
         return output;
     }
+
+    public void Set(string[] mas)
+    {
+        for (int i = 0; i < amount; i++)
+        {
+            foreach (string name in mas)
+            {
+                if (toggles[i].GetComponentInChildren<Text>().text == name)
+                {
+                    toggles[i].isOn = true;
+                }
+            }
+        }
+    }
+
+    public void Default()
+    {
+        for (int i = 0; i < amount; i++)
+        {
+            toggles[i].isOn = false;
+        }
+    }
 }

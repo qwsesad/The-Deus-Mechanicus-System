@@ -5,10 +5,10 @@ using Cysharp.Threading.Tasks;
 public class OutputScript : MonoBehaviour
 {
     public AutoCardScript card;
-    public async UniTask Create(string name, string link, string image)
+    public async UniTask Create(string name, string link, string image, string cost)
     {
         var nobj = Instantiate(card, this.transform);
-        await nobj.SetUp(name, link, image);
+        await nobj.SetUp(name, link, image, cost);
     }
 
     public void Destroy()

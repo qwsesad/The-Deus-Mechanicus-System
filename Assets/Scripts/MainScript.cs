@@ -5,6 +5,7 @@ using UnityEngine.Networking;
 using Cysharp.Threading.Tasks;
 using System.Threading;
 using System;
+using UnityEngine.UI;
 
 public class MainScript : MonoBehaviour
 { 
@@ -13,6 +14,7 @@ public class MainScript : MonoBehaviour
     public GameObject Equip;
 
     public SortScript Sort;
+    public Dropdown Preset;
 
     public ToggleScript Body;
     public ToggleScript BagSize;
@@ -43,15 +45,13 @@ public class MainScript : MonoBehaviour
     public MinMaxScript Year;
 
 
-    string body;
-
     [Serializable]
     public class Auto
     {
         public string name;
         public string link;
         public string image;
-        public double cost;
+        public string cost;
         public double power;
     }
 
@@ -65,18 +65,18 @@ public class MainScript : MonoBehaviour
         var data = FixString(await data0);
         if (data == "{\"Items\":Машины не найдены}" || data == "{\"Items\":[]}")
         {
-            output.Create("Машины не найдены", "https://ukr.host/kb/wp-content/uploads/2018/05/404.jpg", "https://ukr.host/kb/wp-content/uploads/2018/05/404.jpg");
+            output.Create("Машины не найдены", "https://ukr.host/kb/wp-content/uploads/2018/05/404.jpg", "https://ukr.host/kb/wp-content/uploads/2018/05/404.jpg", "");
         }
         else if (data == "{\"Items\":Неправильно переданы данные}")
         {
-            output.Create("Ошибка в передаче данных", "https://cleverics.ru/digital/wp-content/uploads/2014/03/error.png", "https://cleverics.ru/digital/wp-content/uploads/2014/03/error.png");
+            output.Create("Ошибка в передаче данных", "https://cleverics.ru/digital/wp-content/uploads/2014/03/error.png", "https://cleverics.ru/digital/wp-content/uploads/2014/03/error.png", "");
         }
         else
         {
             Auto[] autos = JsonHelper.FromJson<Auto>(data);
             var CreateCards = autos.Select(async card =>
             {
-                await output.Create(card.name, card.link, card.image);
+                await output.Create(card.name, card.link, card.image, "от " + card.cost + " руб.");
             });
             await UniTask.WhenAll(CreateCards);
         }
@@ -144,6 +144,51 @@ public class MainScript : MonoBehaviour
                                                                      Year.getValues() + " " +
                                                                      Sort.Get_Sort();
         return query;
+    }
+
+    public void Presets()
+    {
+        int value = Preset.value;
+
+        switch (value)
+        {
+            case 1:
+                Default();
+                Family();
+                break;
+            case 2:
+                Default();
+                Style();
+                break;
+            default:
+                Default();
+                break;
+        }
+    }
+
+    private void Family()
+    {
+        string[] body ={ "Седан", "Хетчбэк", "Универсал", "Внедорожник", "Кроссовер", "Минивэн"};
+        string[] amountseats = {">5"};
+        string[] bagsize = { "Средний", "Большой", "Огромный" };
+
+        Body.Set(body);
+        AmountSeats.Set(amountseats);
+        BagSize.Set(bagsize);
+    }
+
+    private void Style()
+    {
+        string[] body = { "Седан", "Купе", "Кабриолет"};
+
+        Body.Set(body);
+    }
+
+    private void Default()
+    { 
+        Body.Default();
+        AmountSeats.Default();
+        BagSize.Default();
     }
 }
 

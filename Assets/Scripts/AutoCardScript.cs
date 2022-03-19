@@ -20,9 +20,9 @@ public class AutoCardScript : MonoBehaviour
         return img.result == UnityWebRequest.Result.Success ? DownloadHandlerTexture.GetContent(img) : null;
     }
 
-    public async UniTask SetUp(string name, string link, string image, CancellationToken cancellationtoken = default)
+    public async UniTask SetUp(string name, string link, string image, string cost, CancellationToken cancellationtoken = default)
     {
-        Name.text = name;
+        Name.text = name + "\n" + cost;
         Link = link;
         var imgtexture = await ImgLoad(image, cancellationtoken);
         Image.sprite = Sprite.Create(imgtexture, new Rect(0, 0, imgtexture.width, imgtexture.height), new Vector2(0, 0));
