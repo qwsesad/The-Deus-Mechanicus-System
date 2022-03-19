@@ -8,6 +8,7 @@ public class ToggleScript : MonoBehaviour
 
     [SerializeField] private Toggle[] toggles;
     [SerializeField] private GameObject Parent;
+    [SerializeField] private Text TName;
 
     private int amount = 0;
 
@@ -25,7 +26,7 @@ public class ToggleScript : MonoBehaviour
 
     public string Get_Names()
     {
-        string output = "[";
+        string output = TName.text + " IN (";
 
         for (int i = 0; i < amount; i++)
         {
@@ -35,7 +36,7 @@ public class ToggleScript : MonoBehaviour
             }
         }
 
-        if (output == "[")
+        if (output == (TName.text + " IN ("))
         {
             for (int i = 0; i < amount; i++)
             {
@@ -43,7 +44,7 @@ public class ToggleScript : MonoBehaviour
             }
         }
 
-        output = output.TrimEnd(',') + "]";
+        output = output.TrimEnd(',') + ")";
 
         return output;
     }

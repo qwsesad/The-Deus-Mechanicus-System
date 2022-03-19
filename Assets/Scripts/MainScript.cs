@@ -7,11 +7,12 @@ using System.Threading;
 using System;
 
 public class MainScript : MonoBehaviour
-{
-
+{ 
     public GameObject Technical;
     public GameObject Ext;
     public GameObject Equip;
+
+    public SortScript Sort;
 
     public ToggleScript Body;
     public ToggleScript BagSize;
@@ -50,6 +51,8 @@ public class MainScript : MonoBehaviour
         public string name;
         public string link;
         public string image;
+        public double cost;
+        public double power;
     }
 
     public string server;
@@ -60,29 +63,34 @@ public class MainScript : MonoBehaviour
         var data0 = Get();
         output.Destroy();
         var data = FixString(await data0);
-        Debug.Log(data);
-        Auto[] autos = JsonHelper.FromJson<Auto>(data);
-        var CreateCards = autos.Select(async card =>
+        if (data == "{\"Items\":Машины не найдены}" || data == "{\"Items\":[]}")
         {
-            await output.Create(card.name, card.link, card.image);
-        });
-        await UniTask.WhenAll(CreateCards);
+            output.Create("Машины не найдены", "https://ukr.host/kb/wp-content/uploads/2018/05/404.jpg", "https://ukr.host/kb/wp-content/uploads/2018/05/404.jpg");
+        }
+        else if (data == "{\"Items\":Неправильно переданы данные}")
+        {
+            output.Create("Ошибка в передаче данных", "https://cleverics.ru/digital/wp-content/uploads/2014/03/error.png", "https://cleverics.ru/digital/wp-content/uploads/2014/03/error.png");
+        }
+        else
+        {
+            Auto[] autos = JsonHelper.FromJson<Auto>(data);
+            var CreateCards = autos.Select(async card =>
+            {
+                await output.Create(card.name, card.link, card.image);
+            });
+            await UniTask.WhenAll(CreateCards);
+        }
     }
 
     private void Start()
     {
-        Technical.SetActive(false);
-        Ext.SetActive(false);
-        Equip.SetActive(false);
+
     }
 
     public void Search()
     {
         output.Destroy();
-        //Debug.Log(Body.Get_Names());
-        //Debug.Log(BagSize.Get_Names());
-        Debug.Log(Power.getValues());
-        //GetData();
+        GetData();
     }
 
     public string FixString(string data)
@@ -100,34 +108,42 @@ public class MainScript : MonoBehaviour
     private async UniTask<string> Get(CancellationToken cancellationtoken = default)
     {
         WWWForm form = new WWWForm();
-        form.AddField("Body", Body.Get_Names());
-        form.AddField("BagSize", BagSize.Get_Names());
-        form.AddField("AmountSeats", AmountSeats.Get_Names());
-        form.AddField("AmountDoors", AmountDoors.Get_Names());
-        form.AddField("Country", Country.Get_Names());
-        form.AddField("Mark", Mark.Get_Names());
-        form.AddField("TypeOfDrive", TypeOfDrive.Get_Names());
-        form.AddField("FuelType", FuelType.Get_Names());
-        form.AddField("ElectricWindows", ElectricWindows.Get_Names());
-        form.AddField("Climate", Climate.Get_Names());
-        form.AddField("Roof", Roof.Get_Names());
-        form.AddField("Security", Security.Get_Names());
-        form.AddField("Cabin", Cabin.Get_Names());
-        form.AddField("Multimedia", Multimedia.Get_Names());
-        form.AddField("Assist", Assist.Get_Names());
-        form.AddField("Airbags", Airbags.Get_Names());
-        form.AddField("Transmission", Transmission.Get_Names());
-        form.AddField("Power", Power.getValues());
-        form.AddField("Size", Size.getValues());
-        form.AddField("Acceleration", Acceleration.getValues());
-        form.AddField("Speed", Speed.getValues());
-        form.AddField("FuelConsumption", FuelConsumption.getValues());
-        form.AddField("PowerReserve", PowerReserve.getValues());
-        form.AddField("Cost", Cost.getValues());
-        form.AddField("RoadP", RoadP.getValues());
+        form.AddField("SQL", CreateQuery());
         var www = UnityWebRequest.Post(server, form);
         await www.SendWebRequest().WithCancellation(cancellationtoken);
         return www.result == UnityWebRequest.Result.Success ? www.downloadHandler.text : null;
+    }
+
+    private string CreateQuery()
+    {
+        string query = "SELECT name, link, image, cost, power FROM auto WHERE " + Body.Get_Names() + " AND " +
+                                                                     BagSize.Get_Names() + " AND " +
+                                                                     AmountSeats.Get_Names() + " AND " +
+                                                                     AmountDoors.Get_Names() + " AND " +
+                                                                     Country.Get_Names() + " AND " +
+                                                                     Mark.Get_Names() + " AND " +
+                                                                     TypeOfDrive.Get_Names() + " AND " +
+                                                                     FuelType.Get_Names() + " AND " +
+                                                                     ElectricWindows.Get_Names() + " AND " +
+                                                                     Climate.Get_Names() + " AND " +
+                                                                     Roof.Get_Names() + " AND " +
+                                                                     Security.Get_Names() + " AND " +
+                                                                     Cabin.Get_Names() + " AND " +
+                                                                     Multimedia.Get_Names() + " AND " +
+                                                                     Assist.Get_Names() + " AND " +
+                                                                     Airbags.Get_Names() + " AND " +
+                                                                     Transmission.Get_Names() + " AND " +
+                                                                     Power.getValues() + " AND " +
+                                                                     Size.getValues() + " AND " +
+                                                                     Acceleration.getValues() + " AND " +
+                                                                     Speed.getValues() + " AND " +
+                                                                     FuelConsumption.getValues() + " AND " +
+                                                                     PowerReserve.getValues() + " AND " +
+                                                                     Cost.getValues() + " AND " +
+                                                                     RoadP.getValues() + " AND " +
+                                                                     Year.getValues() + " " +
+                                                                     Sort.Get_Sort();
+        return query;
     }
 }
 
