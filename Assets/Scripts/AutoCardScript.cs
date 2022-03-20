@@ -25,7 +25,8 @@ public class AutoCardScript : MonoBehaviour
         Name.text = name + "\n" + cost;
         Link = link;
         var imgtexture = await ImgLoad(image, cancellationtoken);
-        Image.sprite = Sprite.Create(imgtexture, new Rect(0, 0, imgtexture.width, imgtexture.height), new Vector2(0, 0));
+        if (Image != null && imgtexture != null)
+            Image.sprite = Sprite.Create(imgtexture, new Rect(0, 0, imgtexture.width, imgtexture.height), new Vector2(0, 0));
     }
 
     public void OpenUrl()

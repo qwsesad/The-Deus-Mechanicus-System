@@ -25,10 +25,11 @@ public class MinMaxScript : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    async void Start()
     {
-        SetData();
-
+        Checking.readyget = false;
+        await SetData();
+        Checking.readyget = true;
     }
 
     public string getValues()

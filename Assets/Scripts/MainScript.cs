@@ -65,11 +65,11 @@ public class MainScript : MonoBehaviour
         var data = FixString(await data0);
         if (data == "{\"Items\":Машины не найдены}" || data == "{\"Items\":[]}")
         {
-            output.Create("Машины не найдены", "https://ukr.host/kb/wp-content/uploads/2018/05/404.jpg", "https://ukr.host/kb/wp-content/uploads/2018/05/404.jpg", "");
+            await output.Create("Машины не найдены", "https://ukr.host/kb/wp-content/uploads/2018/05/404.jpg", "https://ukr.host/kb/wp-content/uploads/2018/05/404.jpg", "");
         }
         else if (data == "{\"Items\":Неправильно переданы данные}")
         {
-            output.Create("Ошибка в передаче данных", "https://cleverics.ru/digital/wp-content/uploads/2014/03/error.png", "https://cleverics.ru/digital/wp-content/uploads/2014/03/error.png", "");
+            await output.Create("Ошибка в передаче данных", "https://cleverics.ru/digital/wp-content/uploads/2014/03/error.png", "https://cleverics.ru/digital/wp-content/uploads/2014/03/error.png", "");
         }
         else
         {
@@ -84,14 +84,16 @@ public class MainScript : MonoBehaviour
 
     private void Start()
     {
-
+        Search();
     }
 
-    public void Search()
+    public async void Search()
     {
         output.Destroy();
-        Debug.Log(CreateQuery());
-        GetData();
+        if (Checking.ready && Checking.readyget)
+        {
+            await GetData();
+        }
     }
 
     public string FixString(string data)
@@ -103,7 +105,10 @@ public class MainScript : MonoBehaviour
     public void Exit()
     {
         output.Destroy();
-        Application.Quit();
+        if (Checking.ready)
+        {
+            Application.Quit();
+        }
     }
 
     private async UniTask<string> Get(CancellationToken cancellationtoken = default)
@@ -229,4 +234,12 @@ public static class JsonHelper
     {
         public T[] Items;
     }
+}
+
+public static class Checking
+{
+
+    public static bool ready = true;
+    public static bool readyget = true;
+
 }

@@ -8,11 +8,6 @@ public class RelationWithSubToggleScript : MonoBehaviour
     [SerializeField] private Toggle[] toggles;
     [SerializeField] private Toggle Parent;
 
-    void Start()
-    {
-
-    }
-
     public void ChangeChildren()
     {
         if (Parent.isOn)

@@ -13,6 +13,7 @@ public class OutputScript : MonoBehaviour
 
     public void Destroy()
     {
+        Checking.ready = false;
         GameObject[] Objects;
 
         Objects = GameObject.FindGameObjectsWithTag("AutoCard");
@@ -20,5 +21,6 @@ public class OutputScript : MonoBehaviour
         {
             Destroy(ob);
         }
+        Checking.ready = true;
     }
 }
