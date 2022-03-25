@@ -13,6 +13,6 @@ public class ChangePos : MonoBehaviour
 
     public void ChangeOut()
     {
-        Parent.transform.position = new Vector3(-1920, -62.2f, 0);
+        Parent.transform.position = new Vector3(-2500, -62.2f, 0);
     }
 }

@@ -9,10 +9,6 @@ using UnityEngine.UI;
 
 public class MainScript : MonoBehaviour
 { 
-    public GameObject Technical;
-    public GameObject Ext;
-    public GameObject Equip;
-
     public SortScript Sort;
     public Dropdown Preset;
 
@@ -44,6 +40,9 @@ public class MainScript : MonoBehaviour
     public MinMaxScript RoadP;
     public MinMaxScript Year;
 
+    public Button Next;
+    public Button Prev;
+
 
     [Serializable]
     public class Auto
@@ -56,6 +55,11 @@ public class MainScript : MonoBehaviour
     }
 
     public string server;
+    public int nel;
+    private int ncul;
+    private int page;
+    private int npage;
+    List<Auto> autos = new List<Auto>();
 
     public OutputScript output;
     public async UniTask GetData()
@@ -73,18 +77,25 @@ public class MainScript : MonoBehaviour
         }
         else
         {
-            Auto[] autos = JsonHelper.FromJson<Auto>(data);
-            var CreateCards = autos.Select(async card =>
+            if (autos.Count != 0)
+                autos.Clear();
+            ncul = 0;
+            Auto[] a = JsonHelper.FromJson<Auto>(data);
+            ncul = a.Length;
+            npage = ncul / nel;
+            page = 0;
+            foreach (Auto au in a)
             {
-                await output.Create(card.name, card.link, card.image, "от " + card.cost + " руб.");
-            });
-            await UniTask.WhenAll(CreateCards);
+                autos.Add(au);
+            }
+            ButtonChange();
+            Create();
         }
     }
 
     private void Start()
     {
-        Search();
+        Screen.SetResolution(1600, 900, false);
     }
 
     public async void Search()
@@ -219,6 +230,69 @@ public class MainScript : MonoBehaviour
         RoadP.Default();
         Year.Default();
     }
+
+    private void OnDestroy()
+    {
+        output.Destroy();
+    }
+
+    private void ButtonChange()
+    {
+        if (page >= npage - 1 && page == 0)
+        {
+            Next.gameObject.SetActive(false);
+            Prev.gameObject.SetActive(false);
+        }
+        else if (page < npage - 1 && page != 0)
+        {
+            Next.gameObject.SetActive(true);
+            Prev.gameObject.SetActive(true);
+        }
+        else if (page != 0)
+        {
+            Next.gameObject.SetActive(false);
+            Prev.gameObject.SetActive(true);
+        }
+        else if (page < npage - 1)
+        {
+            Next.gameObject.SetActive(true);
+            Prev.gameObject.SetActive(false);
+        }
+    }
+
+    public void Plus()
+    {
+        if (page < npage - 1)
+        {
+            page++;
+            output.Destroy();
+            ButtonChange();
+            Create();
+        }
+    }
+
+    public void Minus()
+    {
+        if (page > 0)
+        {
+            page--;
+            output.Destroy();
+            ButtonChange();
+            Create();
+        }
+    }
+
+    public async void Create()
+    {
+        List<UniTask> tasks = new List<UniTask>();
+        for (int i = page*nel; i < nel*(page+1) && i < ncul; i++)
+        {
+            UniTask t =  output.Create(autos[i].name, autos[i].link, autos[i].image, "от " + autos[i].cost + " руб.");
+            tasks.Add(t);
+        }
+        await UniTask.WhenAll(tasks);
+    }
+
 }
 
 public static class JsonHelper
