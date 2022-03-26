@@ -1513,10 +1513,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 0
+    m_Left: -1120
     m_Right: 0
-    m_Top: 400
-    m_Bottom: -400
+    m_Top: 250
+    m_Bottom: -250
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
@@ -1537,6 +1537,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   card: {fileID: 5451067291879782082, guid: 063db4b95ac4cf742a8e2d507bd8bd4a, type: 3}
+  ready: 1
 --- !u!1 &42119790
 GameObject:
   m_ObjectHideFlags: 0
@@ -2496,6 +2497,7 @@ MonoBehaviour:
   minmax:
     Min: 
     Max: 
+  ready: 0
 --- !u!1 &78899546
 GameObject:
   m_ObjectHideFlags: 0
@@ -4141,6 +4143,7 @@ MonoBehaviour:
   toggles: []
   Parent: {fileID: 776197385}
   TName: {fileID: 2130946669}
+  ready: 0
 --- !u!1 &145880045
 GameObject:
   m_ObjectHideFlags: 0
@@ -6033,6 +6036,7 @@ MonoBehaviour:
   toggles: []
   Parent: {fileID: 1017596029}
   TName: {fileID: 1024071139}
+  ready: 0
 --- !u!1 &232630257
 GameObject:
   m_ObjectHideFlags: 0
@@ -6238,6 +6242,7 @@ MonoBehaviour:
   toggles: []
   Parent: {fileID: 71011666}
   TName: {fileID: 1846517725}
+  ready: 0
 --- !u!1 &243826575
 GameObject:
   m_ObjectHideFlags: 0
@@ -9469,6 +9474,7 @@ MonoBehaviour:
   minmax:
     Min: 
     Max: 
+  ready: 0
 --- !u!1 &416790588
 GameObject:
   m_ObjectHideFlags: 0
@@ -11104,6 +11110,7 @@ MonoBehaviour:
   toggles: []
   Parent: {fileID: 947807535}
   TName: {fileID: 1730869030}
+  ready: 0
 --- !u!1 &490702495
 GameObject:
   m_ObjectHideFlags: 0
@@ -15093,9 +15100,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Babanoff corp
-
-    c All rights reserved'
+  m_Text: "Babanoff \u0421o.\n(c) All rights reserved"
 --- !u!222 &632681289
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -15158,6 +15163,7 @@ MonoBehaviour:
   toggles: []
   Parent: {fileID: 147145696}
   TName: {fileID: 802780566}
+  ready: 0
 --- !u!1 &636895709
 GameObject:
   m_ObjectHideFlags: 0
@@ -17466,6 +17472,7 @@ MonoBehaviour:
   toggles: []
   Parent: {fileID: 491953086}
   TName: {fileID: 420082935}
+  ready: 0
 --- !u!1 &749390373
 GameObject:
   m_ObjectHideFlags: 0
@@ -18207,6 +18214,7 @@ MonoBehaviour:
   toggles: []
   Parent: {fileID: 846440755}
   TName: {fileID: 469341925}
+  ready: 0
 --- !u!1 &776197385
 GameObject:
   m_ObjectHideFlags: 0
@@ -19316,6 +19324,7 @@ MonoBehaviour:
   minmax:
     Min: 
     Max: 
+  ready: 0
 --- !u!1 &823631967
 GameObject:
   m_ObjectHideFlags: 0
@@ -22616,6 +22625,82 @@ MonoBehaviour:
   minmax:
     Min: 
     Max: 
+  ready: 0
+--- !u!1 &941941735
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 941941736}
+  - component: {fileID: 941941738}
+  - component: {fileID: 941941737}
+  m_Layer: 5
+  m_Name: House
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &941941736
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 941941735}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1296024213}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.000013351, y: 0.00000023842}
+  m_SizeDelta: {x: 56.9346, y: 56.9346}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &941941737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 941941735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: a7149b5b406d36d48b64895bd2ba67c3, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &941941738
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 941941735}
+  m_CullTransparentMesh: 1
 --- !u!1 &942445291
 GameObject:
   m_ObjectHideFlags: 0
@@ -24191,6 +24276,7 @@ MonoBehaviour:
   toggles: []
   Parent: {fileID: 125661925}
   TName: {fileID: 211910873}
+  ready: 0
 --- !u!1 &1004465519
 GameObject:
   m_ObjectHideFlags: 0
@@ -25603,6 +25689,7 @@ MonoBehaviour:
   toggles: []
   Parent: {fileID: 1352365991}
   TName: {fileID: 2003160107}
+  ready: 0
 --- !u!1 &1049451195
 GameObject:
   m_ObjectHideFlags: 0
@@ -26527,6 +26614,7 @@ MonoBehaviour:
   toggles: []
   Parent: {fileID: 1011392108}
   TName: {fileID: 1451439166}
+  ready: 0
 --- !u!1 &1087680437
 GameObject:
   m_ObjectHideFlags: 0
@@ -29853,6 +29941,7 @@ MonoBehaviour:
   toggles: []
   Parent: {fileID: 1292452638}
   TName: {fileID: 1759412369}
+  ready: 0
 --- !u!1 &1241802355
 GameObject:
   m_ObjectHideFlags: 0
@@ -30018,6 +30107,7 @@ MonoBehaviour:
   toggles: []
   Parent: {fileID: 1169896356}
   TName: {fileID: 506394928}
+  ready: 0
 --- !u!1 &1246598878
 GameObject:
   m_ObjectHideFlags: 0
@@ -31423,6 +31513,7 @@ RectTransform:
   m_LocalScale: {x: 1.5066766, y: 1.5066766, z: 1.5066766}
   m_Children:
   - {fileID: 1254935595}
+  - {fileID: 941941736}
   m_Father: {fileID: 1588745794}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -35141,6 +35232,7 @@ MonoBehaviour:
   minmax:
     Min: 
     Max: 
+  ready: 0
 --- !u!1 &1450103695
 GameObject:
   m_ObjectHideFlags: 0
@@ -35195,6 +35287,7 @@ MonoBehaviour:
   toggles: []
   Parent: {fileID: 1235105089}
   TName: {fileID: 490392624}
+  ready: 0
 --- !u!1 &1450556136
 GameObject:
   m_ObjectHideFlags: 0
@@ -36456,6 +36549,7 @@ MonoBehaviour:
   toggles: []
   Parent: {fileID: 1994860746}
   TName: {fileID: 622537744}
+  ready: 0
 --- !u!1 &1490475007
 GameObject:
   m_ObjectHideFlags: 0
@@ -38864,6 +38958,7 @@ MonoBehaviour:
   minmax:
     Min: 
     Max: 
+  ready: 0
 --- !u!1 &1567478798
 GameObject:
   m_ObjectHideFlags: 0
@@ -40195,6 +40290,7 @@ MonoBehaviour:
   toggles: []
   Parent: {fileID: 218904590}
   TName: {fileID: 1910795449}
+  ready: 0
 --- !u!1 &1605140009
 GameObject:
   m_ObjectHideFlags: 0
@@ -40572,6 +40668,7 @@ MonoBehaviour:
   toggles: []
   Parent: {fileID: 256893402}
   TName: {fileID: 170960370}
+  ready: 0
 --- !u!1 &1630740191
 GameObject:
   m_ObjectHideFlags: 0
@@ -45015,6 +45112,7 @@ MonoBehaviour:
   toggles: []
   Parent: {fileID: 474557017}
   TName: {fileID: 1739813878}
+  ready: 0
 --- !u!1 &1822132186
 GameObject:
   m_ObjectHideFlags: 0
@@ -48517,6 +48615,7 @@ MonoBehaviour:
   minmax:
     Min: 
     Max: 
+  ready: 0
 --- !u!1 &1971878024
 GameObject:
   m_ObjectHideFlags: 0
@@ -50510,6 +50609,7 @@ MonoBehaviour:
   minmax:
     Min: 
     Max: 
+  ready: 0
 --- !u!1 &2066690138
 GameObject:
   m_ObjectHideFlags: 0
@@ -50567,6 +50667,7 @@ MonoBehaviour:
   minmax:
     Min: 
     Max: 
+  ready: 0
 --- !u!1 &2069311051
 GameObject:
   m_ObjectHideFlags: 0
