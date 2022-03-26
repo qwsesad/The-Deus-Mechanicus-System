@@ -5,6 +5,9 @@ using Cysharp.Threading.Tasks;
 public class OutputScript : MonoBehaviour
 {
     public AutoCardScript card;
+
+    public bool ready = true;
+
     public async UniTask Create(string name, string link, string image, string cost)
     {
         var nobj = Instantiate(card, this.transform);
@@ -13,7 +16,7 @@ public class OutputScript : MonoBehaviour
 
     public void Destroy()
     {
-        Checking.ready = false;
+        ready = false;
         GameObject[] Objects;
 
         Objects = GameObject.FindGameObjectsWithTag("AutoCard");
@@ -21,6 +24,6 @@ public class OutputScript : MonoBehaviour
         {
             Destroy(ob);
         }
-        Checking.ready = true;
+        ready = true;
     }
 }

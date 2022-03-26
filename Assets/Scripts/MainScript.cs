@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using Cysharp.Threading.Tasks;
 using System.Threading;
+using System.Threading.Tasks;
 using System;
 using UnityEngine.UI;
 
@@ -100,10 +101,20 @@ public class MainScript : MonoBehaviour
 
     public async void Search()
     {
-        output.Destroy();
-        if (Checking.ready && Checking.readyget)
+        bool g = Body.ready && BagSize.ready && AmountSeats.ready && AmountDoors.ready &&Country.ready && Mark.ready && TypeOfDrive.ready &&
+                FuelType.ready && ElectricWindows.ready && Climate.ready && Roof.ready && Security.ready && Cabin.ready && Multimedia.ready &&
+                Assist.ready && Airbags.ready && Transmission.ready && Power.ready && Size.ready && Acceleration.ready && Speed.ready &&
+                FuelConsumption.ready && PowerReserve.ready && Cost.ready && RoadP.ready && Year.ready;
+        if (g)
         {
-            await GetData();
+            output.Destroy();
+            if (output.ready)
+                await GetData();
+        }
+        else
+        {
+            await Task.Delay(5);
+            Search();
         }
     }
 
@@ -116,7 +127,7 @@ public class MainScript : MonoBehaviour
     public void Exit()
     {
         output.Destroy();
-        if (Checking.ready)
+        if (output.ready)
         {
             Application.Quit();
         }
@@ -310,10 +321,3 @@ public static class JsonHelper
     }
 }
 
-public static class Checking
-{
-
-    public static bool ready = true;
-    public static bool readyget = true;
-
-}

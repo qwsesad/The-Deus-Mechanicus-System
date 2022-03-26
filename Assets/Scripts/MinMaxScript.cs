@@ -16,6 +16,8 @@ public class MinMaxScript : MonoBehaviour
 
     public MinMax minmax;
 
+    public bool ready = false;
+
     [Serializable]
     public class MinMax
     {
@@ -27,9 +29,9 @@ public class MinMaxScript : MonoBehaviour
     // Start is called before the first frame update
     async void Start()
     {
-        Checking.readyget = false;
+        ready = false;
         await SetData();
-        Checking.readyget = true;
+        ready = true;
     }
 
     public string getValues()

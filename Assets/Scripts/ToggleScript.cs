@@ -12,8 +12,11 @@ public class ToggleScript : MonoBehaviour
 
     private int amount = 0;
 
+    public bool ready = false;
+
     void Start()
     {
+        ready = false;
         amount = Parent.transform.childCount;
 
         toggles = new Toggle[amount];
@@ -22,6 +25,8 @@ public class ToggleScript : MonoBehaviour
         {
             toggles[i] = Parent.transform.GetChild(i).GetComponent<Toggle>();
         }
+
+        ready = true;
     }
 
     public string Get_Names()
