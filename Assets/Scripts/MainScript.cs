@@ -68,7 +68,7 @@ public class MainScript : MonoBehaviour
         var data0 = Get();
         output.Destroy();
         var data = FixString(await data0);
-        if (data == "{\"Items\":Машины не найдены}" || data == "{\"Items\":[]}")
+        if (data == "{\"Items\":Товары не найдены}" || data == "{\"Items\":[]}")
         {
             await output.Create("Машины не найдены", "https://ukr.host/kb/wp-content/uploads/2018/05/404.jpg", "https://ukr.host/kb/wp-content/uploads/2018/05/404.jpg", "");
         }
