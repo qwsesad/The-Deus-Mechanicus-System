@@ -23,13 +23,13 @@ public class MainScript : MonoBehaviour
     public ToggleScript FuelType;
     public ToggleScript Transmission;
     public ToggleScript ElectricWindows;
-    public ToggleScript Climate;
-    public ToggleScript Roof;
+    public Toggle2Script Climate;
+    public Toggle2Script Roof;
     public ToggleScript Security;
     public ToggleScript Cabin;
-    public ToggleScript Multimedia;
-    public ToggleScript Assist;
-    public ToggleScript Airbags;
+    public Toggle2Script Multimedia;
+    public Toggle2Script Assist;
+    public Toggle2Script Airbags;
 
     public MinMaxScript Power;
     public MinMaxScript Size;
