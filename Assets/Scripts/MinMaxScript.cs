@@ -139,7 +139,7 @@ public class MinMaxScript : MonoBehaviour
 
     public void SetMin(double m)
     {
-        if (double.Parse(minmax.Min) <= m && double.Parse(minmax.Min) >= m)
+        if (double.Parse(minmax.Min) <= m && double.Parse(minmax.Max) >= m)
         {
             min.text = m.ToString();
         }
@@ -147,9 +147,9 @@ public class MinMaxScript : MonoBehaviour
 
     public void SetMax(double m)
     {
-        if (double.Parse(minmax.Min) <= m && double.Parse(minmax.Min) >= m)
+        if (double.Parse(minmax.Min) <= m && double.Parse(minmax.Max) >= m)
         {
-            min.text = m.ToString();
+            max.text = m.ToString();
         }
     }
 

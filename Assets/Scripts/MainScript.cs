@@ -178,18 +178,34 @@ public class MainScript : MonoBehaviour
     {
         int value = Preset.value;
 
+        Default();
         switch (value)
         {
             case 1:
-                Default();
                 Family();
                 break;
             case 2:
-                Default();
                 Style();
                 break;
+            case 3:
+                LongTrip();
+                break;
+            case 4:
+                Business();
+                break;
+            case 5:
+                ActiveHolidays();
+                break;
+            case 6:
+                SportCars();
+                break;
+            case 7:
+                Dacha();
+                break;
+            case 8:
+                City();
+                break;
             default:
-                Default();
                 break;
         }
     }
@@ -199,15 +215,71 @@ public class MainScript : MonoBehaviour
         string[] body ={ "Седан", "Хетчбэк", "Универсал", "Внедорожник", "Кроссовер", "Минивэн"};
         string[] amountseats = {">5"};
         string[] bagsize = { "Средний", "Большой", "Огромный" };
+        string[] airbags = { "Водительские", "Пассажирские", "Боковые", "Шторки" };
 
         Body.Set(body);
         AmountSeats.Set(amountseats);
         BagSize.Set(bagsize);
+        Airbags.Set(airbags);
     }
 
     private void Style()
     {
         string[] body = { "Седан", "Купе", "Кабриолет"};
+
+        Body.Set(body);
+    }
+
+    private void LongTrip()
+    {
+        string[] body = { "Седан", "Хетчбэк", "Универсал", "Внедорожник", "Кроссовер", "Минивэн" };
+        string[] bagsize = { "Средний", "Большой", "Огромный" };
+
+        PowerReserve.SetMin(800);
+        Body.Set(body);
+        BagSize.Set(bagsize);
+    }
+
+    private void ActiveHolidays()
+    {
+        string[] body = {"Внедорожник", "Кроссовер", "Минивэн", "Пикап" };
+        string[] amountseats = { "4", ">5" };
+        string[] typeofdrive = { "Полный" };
+
+        RoadP.SetMin(180);
+        AmountSeats.Set(amountseats);
+        TypeOfDrive.Set(typeofdrive);
+        Body.Set(body);
+    }
+
+    private void Business()
+    {
+        string[] body = { "Минивэн", "Микроавтобус", "Пикап", "Фургон", "Шасси", "Борт" };
+      
+        Body.Set(body);
+    }
+
+    private void SportCars()
+    {
+        string[] body = {"Кроссовер", "Купе", "Кабриолет" };
+
+
+        Acceleration.SetMax(8);
+        Body.Set(body);
+    }
+
+    private void Dacha()
+    {
+        string[] body = { "Внедорожник", "Кроссовер"};
+        string[] bagsize = { "Средний", "Большой", "Огромный" };
+
+        Body.Set(body);
+        BagSize.Set(bagsize);
+    }
+
+    private void City()
+    {
+        string[] body = { "Седан", "Хетчбэк" };
 
         Body.Set(body);
     }

@@ -19,9 +19,52 @@ public class RelationWithSubToggleScript : MonoBehaviour
         }
         else
         {
+            bool check = true;
             foreach (Toggle tog in toggles)
             {
-                tog.isOn = false;
+                if (!tog.isOn)
+                {
+                    check = false;
+                    break;
+                }
+            }
+            if (check)
+            {
+                foreach (Toggle tog in toggles)
+                {
+                    tog.isOn = false;
+                }
+            }
+        }
+    }
+
+    public void ChangeParent()
+    {
+        if(Parent.isOn)
+        {
+            foreach (Toggle tog in toggles)
+            {
+                if (!tog.isOn)
+                {
+                    Parent.isOn = false;
+                    break;
+                }
+            }
+        }
+        else
+        {
+            bool check = true;
+            foreach (Toggle tog in toggles)
+            {
+                if (!tog.isOn)
+                {
+                    check = false;
+                    break;
+                }
+            }
+            if (check)
+            {
+                Parent.isOn = true;
             }
         }
     }
